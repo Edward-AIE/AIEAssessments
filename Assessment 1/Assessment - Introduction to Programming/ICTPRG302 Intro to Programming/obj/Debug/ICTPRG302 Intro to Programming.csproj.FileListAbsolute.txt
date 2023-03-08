@@ -1,0 +1,8 @@
+C:\Users\s215765\Downloads\Assessment - ICTPRG302 Intro to Programming\ICTPRG302 Intro to Programming\ICTPRG302 Intro to Programming\bin\Debug\ICTPRG302 Intro to Programming.exe.config
+C:\Users\s215765\Downloads\Assessment - ICTPRG302 Intro to Programming\ICTPRG302 Intro to Programming\ICTPRG302 Intro to Programming\bin\Debug\ICTPRG302 Intro to Programming.exe
+C:\Users\s215765\Downloads\Assessment - ICTPRG302 Intro to Programming\ICTPRG302 Intro to Programming\ICTPRG302 Intro to Programming\bin\Debug\ICTPRG302 Intro to Programming.pdb
+C:\Users\s215765\Downloads\Assessment - ICTPRG302 Intro to Programming\ICTPRG302 Intro to Programming\ICTPRG302 Intro to Programming\obj\Debug\ICTPRG302 Intro to Programming.csproj.AssemblyReference.cache
+C:\Users\s215765\Downloads\Assessment - ICTPRG302 Intro to Programming\ICTPRG302 Intro to Programming\ICTPRG302 Intro to Programming\obj\Debug\ICTPRG302 Intro to Programming.csproj.SuggestedBindingRedirects.cache
+C:\Users\s215765\Downloads\Assessment - ICTPRG302 Intro to Programming\ICTPRG302 Intro to Programming\ICTPRG302 Intro to Programming\obj\Debug\ICTPRG302 Intro to Programming.csproj.CoreCompileInputs.cache
+C:\Users\s215765\Downloads\Assessment - ICTPRG302 Intro to Programming\ICTPRG302 Intro to Programming\ICTPRG302 Intro to Programming\obj\Debug\ICTPRG302 Intro to Programming.exe
+C:\Users\s215765\Downloads\Assessment - ICTPRG302 Intro to Programming\ICTPRG302 Intro to Programming\ICTPRG302 Intro to Programming\obj\Debug\ICTPRG302 Intro to Programming.pdb
