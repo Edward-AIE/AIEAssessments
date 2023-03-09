@@ -1,0 +1,8 @@
+C:\Users\WIL0094\source\repos\FibonacciGen1\bin\Debug\FibonacciGen1.exe.config
+C:\Users\WIL0094\source\repos\FibonacciGen1\bin\Debug\FibonacciGen1.exe
+C:\Users\WIL0094\source\repos\FibonacciGen1\bin\Debug\FibonacciGen1.pdb
+C:\Users\WIL0094\source\repos\FibonacciGen1\obj\Debug\FibonacciGen1.csproj.AssemblyReference.cache
+C:\Users\WIL0094\source\repos\FibonacciGen1\obj\Debug\FibonacciGen1.csproj.SuggestedBindingRedirects.cache
+C:\Users\WIL0094\source\repos\FibonacciGen1\obj\Debug\FibonacciGen1.csproj.CoreCompileInputs.cache
+C:\Users\WIL0094\source\repos\FibonacciGen1\obj\Debug\FibonacciGen1.exe
+C:\Users\WIL0094\source\repos\FibonacciGen1\obj\Debug\FibonacciGen1.pdb
