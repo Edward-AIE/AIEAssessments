@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 2614882396581879107}
   - component: {fileID: 2614882396581879105}
   - component: {fileID: 2819868270300412770}
+  - component: {fileID: 1835832201023216404}
   m_Layer: 3
   m_Name: Tank
   m_TagString: Player
@@ -179,6 +180,20 @@ MonoBehaviour:
   m_Shell: {fileID: 8923364413933927531, guid: 73b64d74b0660be4bae058e93db668a8, type: 3}
   m_FireTransform: {fileID: 1244347078652992498}
   m_LaunchForce: 30
+--- !u!114 &1835832201023216404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2614882396581879104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 919205a7054683647a60ca6393a172bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_StartingHealth: 100
+  m_ExplosionPrefab: {fileID: 122668, guid: 5f53e2b760f0b2a4c8b27bb6f25b3c90, type: 3}
 --- !u!1 &2614882396581879106
 GameObject:
   m_ObjectHideFlags: 0
@@ -589,7 +604,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7962251703899307161}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.509, z: 1.085}
+  m_LocalPosition: {x: 0, y: 0.618, z: 1.288}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -361,6 +361,7 @@
 "Assets/Scripts/Tank/EnemyTankMovement.cs"
 "Assets/Scripts/Tank/EnemyTankShooting.cs"
 "Assets/Scripts/Tank/TankAim.cs"
+"Assets/Scripts/Tank/TankHealth.cs"
 "Assets/Scripts/Tank/TankMovement.cs"
 "Assets/Scripts/Tank/TankShooting.cs"
 -langversion:9.0
