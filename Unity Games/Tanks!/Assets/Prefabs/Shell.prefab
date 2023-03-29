@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_MaxLifeTime: 2
-  m_MaxDamage: 34
+  m_MaxDamage: 100
   m_ExplosionRadius: 5
   m_ExplosionForce: 100
   m_ExplosionParticles: {fileID: 4291411318764772116}

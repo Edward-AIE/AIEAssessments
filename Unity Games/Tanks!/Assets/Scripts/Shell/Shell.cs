@@ -28,24 +28,27 @@ public class Shell : MonoBehaviour
     {
         //Find the rigidbody of the collision object
         Rigidbody targetRigidbody = other.gameObject.GetComponent<Rigidbody>();
-
+        
         //Only tanks will have rigidbody scripts
         if (targetRigidbody != null)
         {
+         
             //Add an explosion force
             targetRigidbody.AddExplosionForce(m_ExplosionForce, transform.position, m_ExplosionRadius);
 
             //Find the TankHealth script associated with the rigidbody
-            TankHealth targetHealth = targetRigidbody.GetComponent<TankHealth>();
+          
+        }
 
-            if (targetHealth != null)
-            {
-                //Calculate the amoutn of damage the target should take based on its distance from the shell
-                float damage = CalculateDamage(targetRigidbody.position);
+        TankHealth targetHealth = other.gameObject.GetComponent<TankHealth>();
+        
+        if (targetHealth != null)
+        {
+            //Calculate the amoutn of damage the target should take based on its distance from the shell
+            float damage = CalculateDamage(targetHealth.transform.position);
 
-                //Deal this damage to the tank
-                targetHealth.TakeDamage(damage);
-            }
+            //Deal this damage to the tank
+            targetHealth.TakeDamage(damage);
         }
 
         //Unparent the particles from the shell
@@ -66,12 +69,12 @@ public class Shell : MonoBehaviour
         //Create a vector from the shell to the target
         Vector3 explosionToTarget = targetPosition - transform.position;
 
-        //Calculate the distance from the shel to the target
+        //Calculate the distance from the shell to the target
         float explosionDistance = explosionToTarget.magnitude;
-
+      
         //Calculate the proportion of the maximum distance (the explosionRadius) the target is away
-        float relativeDistance = (m_ExplosionRadius - explosionDistance * m_MaxDamage);
-
+        float relativeDistance = (m_ExplosionRadius - explosionDistance) / m_MaxDamage;
+       
         //Calculate damage as this proportion of the maximum possible damage
         float damage = relativeDistance * m_MaxDamage;
 

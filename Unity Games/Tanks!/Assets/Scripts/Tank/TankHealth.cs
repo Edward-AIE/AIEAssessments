@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TankHealth : MonoBehaviour
 {
@@ -12,8 +13,13 @@ public class TankHealth : MonoBehaviour
 
     private float m_CurrentHealth;
     private bool m_Dead;
+    
     //The particle system that will play when the tank is destroyed
     private ParticleSystem m_ExplosionParticles;
+
+    public Image m_HealthBar;
+    public Image m_EnemyHealthBar;
+    private float m_HealthToShow;
 
     private void Awake()
     {
@@ -35,7 +41,16 @@ public class TankHealth : MonoBehaviour
 
     private void SetHealthUI()
     {
-        //TO DO: Update the user interface showing the tank's health
+        if (gameObject.tag == "Player")
+        {
+            m_HealthToShow = m_CurrentHealth / m_StartingHealth;
+            m_HealthBar.fillAmount = m_HealthToShow;
+        }
+        else if (gameObject.tag == "Untagged")
+        {
+            m_HealthToShow = m_CurrentHealth / m_StartingHealth;
+            m_EnemyHealthBar.fillAmount = m_HealthToShow;
+        }
     }
 
     public void TakeDamage(float amount)
