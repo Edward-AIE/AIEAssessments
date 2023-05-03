@@ -9,7 +9,7 @@ public class HighScores : MonoBehaviour
 
     string currentDirectory;
 
-    public string scoreFileName = "highschres.txt";
+    public string scoreFileName = "highscores.txt";
 
     void Start()
     {

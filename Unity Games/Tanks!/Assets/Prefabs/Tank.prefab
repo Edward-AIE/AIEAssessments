@@ -80,6 +80,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Speed: 12
   m_TurnSpeed: 180
+  m_StartPosition: {fileID: 0}
 --- !u!114 &2819868270300412770
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -3,13 +3,14 @@ using System.Collections;
 
 public class TankMovement : MonoBehaviour
 {
-
     public float m_Speed = 12f;        // How fast the tank moves forward and back 
     public float m_TurnSpeed = 180f;   // How fast the tank turns in degrees per second 
 
     private Rigidbody m_Rigidbody;
     private float m_MovementInputValue; // The current value of the movement input 
     private float m_TurnInputValue;     // the current value of the turn input 
+
+    [SerializeField] private Transform m_StartPosition;
 
     private void Awake()
     {
@@ -24,6 +25,8 @@ public class TankMovement : MonoBehaviour
         // also reset the input values 
         m_MovementInputValue = 0f;
         m_TurnInputValue = 0f;
+
+        transform.position = m_StartPosition.position;
     }
     private void OnDisable()
     {

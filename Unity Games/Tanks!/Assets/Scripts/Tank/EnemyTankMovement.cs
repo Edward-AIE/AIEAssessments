@@ -20,6 +20,9 @@ public class EnemyTankMovement : MonoBehaviour
     // Will be set to true when this tank should follow the player 
     private bool m_Follow;
 
+    public List<Transform> _waypoints = new List<Transform>();
+    private int currentWaypoint;
+
 
     // Start is called before the first frame update
     void Start()
@@ -68,8 +71,29 @@ public class EnemyTankMovement : MonoBehaviour
     void Update()
     {
         if (m_Follow == false)
-            return;
-
+        {
+            if (_waypoints.Count <= 0)
+            {
+                return;
+            }
+            if (currentWaypoint < _waypoints.Count)
+            {
+                if (Vector3.Distance(transform.position, _waypoints[currentWaypoint].position) > 2)
+                {
+                    m_NavAgent.SetDestination(_waypoints[currentWaypoint].position);
+                }
+                else
+                {
+                    currentWaypoint++;
+                }
+            }
+            else
+            {
+                currentWaypoint = 0;
+            }
+        }
+        else
+        {
         // get distance from player to enemy tank 
         float distance = (m_Player.transform.position - transform.position).magnitude;
         // if distance is less than stop distance, then stop moving 
@@ -87,5 +111,8 @@ public class EnemyTankMovement : MonoBehaviour
         {
             m_Turret.LookAt(m_Player.transform);
         }
+        }
+
+
     }
 }
