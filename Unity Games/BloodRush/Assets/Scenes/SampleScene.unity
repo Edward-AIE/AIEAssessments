@@ -601,22 +601,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 6124697057506180754, guid: ffdbba6ffcb197f4da5bd8fe5f30c791, type: 3}
-      propertyPath: moveSpeed
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 6124697057506180754, guid: ffdbba6ffcb197f4da5bd8fe5f30c791, type: 3}
-      propertyPath: walkSpeed
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 6124697057506180754, guid: ffdbba6ffcb197f4da5bd8fe5f30c791, type: 3}
-      propertyPath: sprintSpeed
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 6124697057506180754, guid: ffdbba6ffcb197f4da5bd8fe5f30c791, type: 3}
-      propertyPath: groundLayer.m_Bits
-      value: 64
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ffdbba6ffcb197f4da5bd8fe5f30c791, type: 3}
 --- !u!4 &6124697057857644605 stripped
