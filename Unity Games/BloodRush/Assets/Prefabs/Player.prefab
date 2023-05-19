@@ -204,8 +204,9 @@ MonoBehaviour:
   camPosChangeTime: 20
   slideDrag: 0.5
   slideCamTilt: 10
+  slideJumpForce: 5
   groundDrag: 6
-  airDrag: 0.5
+  airDrag: 0
   airMultiplier: 0.1
   dashForce: 7
   jumpKey: 32
@@ -324,7 +325,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 299ae88fc0a818a4e9f3274b7b3d9094, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

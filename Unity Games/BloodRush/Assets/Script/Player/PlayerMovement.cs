@@ -21,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float camPosChangeTime;
     [SerializeField] float slideDrag;
     [SerializeField] float slideCamTilt;
+    [SerializeField] float slideJumpForce;
 
     [Header("Drag")]
     public float groundDrag = 6f;
@@ -112,6 +113,11 @@ public class PlayerMovement : MonoBehaviour
         {
             DoubleJump();
             hasJumped = true;
+        }
+
+        if (Input.GetKeyDown(jumpKey) && isSliding)
+        {
+            SlideJump();
         }
 
         if (isGrounded)
@@ -211,6 +217,10 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.AddForce(transform.up * doubleJumpForce, ForceMode.Impulse);
         }
+    }
+    void SlideJump()
+    {
+        rb.AddForce(transform.up + orientation.forward * slideJumpForce, ForceMode.Impulse);
     }
 
     void Dash()
