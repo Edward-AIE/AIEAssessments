@@ -9,6 +9,7 @@ public class PlayerLook : MonoBehaviour
 
     [SerializeField] Transform cam;
     [SerializeField] Transform orientation;
+    [SerializeField] Wallrun wallrun;
 
     float mouseX;
     float mouseY;
@@ -28,7 +29,7 @@ public class PlayerLook : MonoBehaviour
     {
         MyInput();
 
-        cam.transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
+        cam.transform.rotation = Quaternion.Euler(xRotation, yRotation, wallrun.tilt);
         orientation.transform.rotation = Quaternion.Euler(0, yRotation, 0);
     }
 

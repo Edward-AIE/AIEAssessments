@@ -453,9 +453,9 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.01
   far clip plane: 1000
-  field of view: 60
+  field of view: 90
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -601,6 +601,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 9024492671959642293, guid: ffdbba6ffcb197f4da5bd8fe5f30c791, type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 1168872470}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ffdbba6ffcb197f4da5bd8fe5f30c791, type: 3}
 --- !u!4 &6124697057857644605 stripped

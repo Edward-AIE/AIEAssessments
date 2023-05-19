@@ -14,27 +14,43 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float sprintSpeed;
     [SerializeField] float acceleration = 10f;
 
+    [Header("Sliding")]
+    [SerializeField] Transform cameraPosition;
+    [SerializeField] Transform nonSlideCamPosition;
+    [SerializeField] Transform slideCamPosition;
+    [SerializeField] float camPosChangeTime;
+    [SerializeField] float slideDrag;
+    [SerializeField] float slideCamTilt;
 
     [Header("Drag")]
     public float groundDrag = 6f;
     public float airDrag = 2;
     [SerializeField] float airMultiplier = -1f;
 
+    [Header("Dash")]
+    [SerializeField] float dashForce;
+
     [Header("Keybinds")]
     [SerializeField] KeyCode jumpKey = KeyCode.Space;
     [SerializeField] KeyCode sprintKey = KeyCode.LeftShift;
+    [SerializeField] KeyCode dashKey = KeyCode.LeftShift;
+    [SerializeField] KeyCode slideKey = KeyCode.LeftControl;
 
     [Header("Other")]
     [SerializeField] Transform orientation;
     [SerializeField] float groundDistance = 0.4f;
     [SerializeField] LayerMask groundLayer;
+    [SerializeField] Wallrun wallrun;
 
     float horizontalMovement;
     float verticalMovement;
     float playerHeight = 2f;
     
     bool isGrounded;
-    private bool hasJumped;
+    bool canDash;
+    bool isSliding;
+    public bool canJump;
+    public bool hasJumped;
 
     Vector3 moveDirection;
     Vector3 slopeMoveDirection;
@@ -71,10 +87,20 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         isGrounded = Physics.CheckSphere(transform.position - new Vector3(0, 1, 0), groundDistance, groundLayer);
+        
+        if (canDash && !isGrounded)
+        {
+            if (Input.GetKeyDown(dashKey))
+            {
+                Dash();
+                canDash = false;
+            }
+        }
 
         if (isGrounded)
         {
             hasJumped = false;
+            canDash = true;
         }
 
         if (Input.GetKeyDown(jumpKey) && isGrounded)
@@ -86,6 +112,22 @@ public class PlayerMovement : MonoBehaviour
         {
             DoubleJump();
             hasJumped = true;
+        }
+
+        if (isGrounded)
+        {
+            if (Input.GetKey(slideKey))
+            {
+                BeginSlide();
+            }
+            else if (!Input.GetKey(slideKey))
+            {
+                EndSlide();
+            }
+        }
+        else
+        {
+            EndSlide();
         }
 
         slopeMoveDirection = Vector3.ProjectOnPlane(moveDirection, slopeHit.normal);
@@ -110,18 +152,21 @@ public class PlayerMovement : MonoBehaviour
 
     void MovePlayer()
     {
-        if (isGrounded && !OnSlope())
+        if (!isSliding)
         {
-            rb.AddForce(moveDirection * moveSpeed, ForceMode.Acceleration);
+            if (isGrounded && !OnSlope())
+            {
+                rb.AddForce(moveDirection * moveSpeed, ForceMode.Acceleration);
 
-        }
-        else if(OnSlope() && isGrounded)
-        {
-            rb.AddForce(slopeMoveDirection * moveSpeed, ForceMode.Acceleration);
-        }
-        else if (!isGrounded)
-        {
-            rb.AddForce(moveDirection * moveSpeed * airMultiplier, ForceMode.Acceleration);
+            }
+            else if(OnSlope() && isGrounded)
+            {
+                rb.AddForce(slopeMoveDirection * moveSpeed, ForceMode.Acceleration);
+            }
+            else if (!isGrounded)
+            {
+                rb.AddForce(moveDirection * moveSpeed * airMultiplier, ForceMode.Acceleration);
+            }
         }
     }
 
@@ -129,7 +174,14 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isGrounded)
         {
-            rb.drag = groundDrag;
+            if (isSliding)
+            {
+                rb.drag = slideDrag;
+            }
+            else
+            {
+                rb.drag = groundDrag;
+            }
         }
         else
         {
@@ -155,6 +207,53 @@ public class PlayerMovement : MonoBehaviour
     }
     void DoubleJump()
     {
-        rb.AddForce(transform.up * doubleJumpForce, ForceMode.Impulse);
+        if (canJump)
+        {
+            rb.AddForce(transform.up * doubleJumpForce, ForceMode.Impulse);
+        }
+    }
+
+    void Dash()
+    {
+        rb.velocity = new Vector3(0, rb.velocity.y, 0);
+        
+        if (Input.GetKey(KeyCode.A))
+        {
+            rb.AddForce(-orientation.right * dashForce, ForceMode.Impulse);
+        }
+        else if (Input.GetKey(KeyCode.W))
+        {
+            rb.AddForce(orientation.forward * dashForce, ForceMode.Impulse);
+        }
+        else if (Input.GetKey(KeyCode.S))
+        {
+            rb.AddForce(-orientation.forward * dashForce, ForceMode.Impulse);
+        }
+        else if (Input.GetKey(KeyCode.D))
+        {
+            rb.AddForce(orientation.right * dashForce, ForceMode.Impulse);
+        }
+    }
+
+    void BeginSlide()
+    {
+        isSliding = true;
+
+        cameraPosition.position = Vector3.Lerp(cameraPosition.position, slideCamPosition.position, camPosChangeTime * Time.deltaTime);
+        if(rb.velocity != new Vector3(0, 0, 0))
+        {
+            wallrun.tilt = Mathf.Lerp(wallrun.tilt, slideCamTilt, 20 * Time.deltaTime);
+        }
+    }
+
+    void EndSlide()
+    {
+        isSliding = false;
+
+        cameraPosition.position = Vector3.Lerp(cameraPosition.position, nonSlideCamPosition.position, camPosChangeTime * Time.deltaTime);
+        if (rb.velocity != new Vector3(0, 0, 0))
+        {
+            wallrun.tilt = Mathf.Lerp(wallrun.tilt, 0, 20 * Time.deltaTime);
+        }
     }
 }

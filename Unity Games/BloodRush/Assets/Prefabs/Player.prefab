@@ -1,5 +1,67 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &851652050
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 851652051}
+  m_Layer: 0
+  m_Name: Camera Slide Position
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &851652051
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 851652050}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.078, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6124697057506180748}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &905336875
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 905336876}
+  m_Layer: 0
+  m_Name: Camera Main Position
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &905336876
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 905336875}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.636, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6124697057506180748}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2110836728705439596
 GameObject:
   m_ObjectHideFlags: 0
@@ -74,6 +136,7 @@ GameObject:
   - component: {fileID: 6124697057506180755}
   - component: {fileID: 6124697057506180754}
   - component: {fileID: 6124697057506180749}
+  - component: {fileID: 9024492671959642293}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -96,6 +159,8 @@ Transform:
   - {fileID: 6124697058427746171}
   - {fileID: 1251768499344024173}
   - {fileID: 5212476928876983272}
+  - {fileID: 905336876}
+  - {fileID: 851652051}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -133,16 +198,28 @@ MonoBehaviour:
   walkSpeed: 40
   sprintSpeed: 100
   acceleration: 10
+  cameraPosition: {fileID: 1251768499344024173}
+  nonSlideCamPosition: {fileID: 905336876}
+  slideCamPosition: {fileID: 851652051}
+  camPosChangeTime: 20
+  slideDrag: 0.5
+  slideCamTilt: 10
   groundDrag: 6
   airDrag: 0.5
   airMultiplier: 0.1
+  dashForce: 7
   jumpKey: 32
   sprintKey: 304
+  dashKey: 304
+  slideKey: 306
   orientation: {fileID: 5212476928876983272}
   groundDistance: 0.4
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  wallrun: {fileID: 9024492671959642293}
+  canJump: 0
+  hasJumped: 0
 --- !u!114 &6124697057506180749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,6 +236,32 @@ MonoBehaviour:
   sensY: 100
   cam: {fileID: 0}
   orientation: {fileID: 5212476928876983272}
+  wallrun: {fileID: 9024492671959642293}
+--- !u!114 &9024492671959642293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6124697057506180753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 977b5f42f7c6bb54e829bba2959346b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerMovement: {fileID: 6124697057506180754}
+  orientation: {fileID: 5212476928876983272}
+  wallDistance: 0.6
+  minimumJumpHeight: 1.5
+  wallRunGravity: 0
+  wallRunJumpForce: 3
+  cam: {fileID: 0}
+  fov: 90
+  wallFov: 110
+  wallFovTime: 20
+  camTilt: 20
+  camTiltTime: 20
+  tilt: 0
 --- !u!1 &6124697058427746170
 GameObject:
   m_ObjectHideFlags: 0
