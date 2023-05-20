@@ -214,6 +214,7 @@ MonoBehaviour:
   dashKey: 304
   slideKey: 306
   orientation: {fileID: 5212476928876983272}
+  fistAnimator: {fileID: 0}
   groundDistance: 0.4
   groundLayer:
     serializedVersion: 2
