@@ -7,7 +7,7 @@ public class PlayerLook : MonoBehaviour
     [SerializeField] private float sensX;
     [SerializeField] private float sensY;
 
-    [SerializeField] Transform cam;
+    [SerializeField] Camera cam;
     [SerializeField] Transform orientation;
     [SerializeField] Wallrun wallrun;
 
@@ -23,6 +23,7 @@ public class PlayerLook : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        cam = Camera.main;
     }
 
     private void Update()

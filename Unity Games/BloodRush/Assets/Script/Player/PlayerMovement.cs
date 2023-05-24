@@ -39,7 +39,6 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Other")]
     [SerializeField] Transform orientation;
-    [SerializeField] Animator fistAnimator;
     [SerializeField] float groundDistance = 0.4f;
     [SerializeField] LayerMask groundLayer;
     [SerializeField] Wallrun wallrun;
@@ -201,15 +200,10 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(sprintKey) && isGrounded)
         {
             moveSpeed = Mathf.Lerp(moveSpeed, sprintSpeed, acceleration * Time.deltaTime);
-            if(rb.velocity != new Vector3(0, 0, 0))
-            {
-                fistAnimator.SetBool("Is Sprinting", true);
-            }
         }
         else
         {
             moveSpeed = Mathf.Lerp(moveSpeed, walkSpeed, acceleration * Time.deltaTime);
-            fistAnimator.SetBool("Is Sprinting", false);
         }
     }
 

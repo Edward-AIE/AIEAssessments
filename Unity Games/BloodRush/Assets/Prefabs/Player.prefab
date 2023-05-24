@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 851652051}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Camera Slide Position
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 905336876}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Camera Main Position
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1251768499344024173}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Camera Position
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5212476928876983272}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Orientation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137,7 +137,9 @@ GameObject:
   - component: {fileID: 6124697057506180754}
   - component: {fileID: 6124697057506180749}
   - component: {fileID: 9024492671959642293}
-  m_Layer: 0
+  - component: {fileID: 4013026787503355015}
+  - component: {fileID: 7746251542358964813}
+  m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -179,7 +181,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 3
 --- !u!114 &6124697057506180754
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,7 +216,6 @@ MonoBehaviour:
   dashKey: 304
   slideKey: 306
   orientation: {fileID: 5212476928876983272}
-  fistAnimator: {fileID: 0}
   groundDistance: 0.4
   groundLayer:
     serializedVersion: 2
@@ -264,6 +265,34 @@ MonoBehaviour:
   camTilt: 20
   camTiltTime: 10
   tilt: 0
+--- !u!114 &4013026787503355015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6124697057506180753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46515e85b58e593448d02b75c4cb85b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dashTime: 50
+  dashKey: 324
+  orientation: {fileID: 5212476928876983272}
+--- !u!135 &7746251542358964813
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6124697057506180753}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 12
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6124697058427746170
 GameObject:
   m_ObjectHideFlags: 0
@@ -276,7 +305,7 @@ GameObject:
   - component: {fileID: 6124697058427746166}
   - component: {fileID: 6124697058427746165}
   - component: {fileID: 6124697058427746164}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}

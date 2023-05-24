@@ -46,6 +46,7 @@ public class Wallrun : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        cam = Camera.main;
     }
 
     private void Update()
