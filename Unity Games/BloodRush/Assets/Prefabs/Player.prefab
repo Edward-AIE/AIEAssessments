@@ -138,7 +138,6 @@ GameObject:
   - component: {fileID: 6124697057506180749}
   - component: {fileID: 9024492671959642293}
   - component: {fileID: 4013026787503355015}
-  - component: {fileID: 7746251542358964813}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -277,22 +276,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46515e85b58e593448d02b75c4cb85b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dashTime: 50
+  dashTime: 20
   dashKey: 324
-  orientation: {fileID: 5212476928876983272}
---- !u!135 &7746251542358964813
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6124697057506180753}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 12
-  m_Center: {x: 0, y: 0, z: 0}
+  cameraPosition: {fileID: 1251768499344024173}
+  enemy:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!1 &6124697058427746170
 GameObject:
   m_ObjectHideFlags: 0

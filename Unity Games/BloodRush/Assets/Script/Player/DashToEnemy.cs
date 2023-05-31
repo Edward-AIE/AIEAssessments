@@ -5,11 +5,21 @@ using UnityEngine.UI;
 
 public class DashToEnemy : MonoBehaviour
 {
-    private Image dashConfirm;
     private bool canDash;
     [SerializeField] private float dashTime;
     [SerializeField] private KeyCode dashKey = KeyCode.Mouse1;
-    [SerializeField] private Transform orientation;
+    [SerializeField] private Transform cameraPosition;
+    public LayerMask enemy;
+    private RaycastHit hitInfo;
+    private Transform enemyDashSpot;
+    private Camera cam;
+    private Enemy temp;
+
+    private void Start()
+    {
+        canDash = false;
+        cam = Camera.main;
+    }
 
     // Update is called once per frame
     void Update()
@@ -19,37 +29,41 @@ public class DashToEnemy : MonoBehaviour
             if (Input.GetKeyDown(dashKey))
             {
                 Debug.Log("Dash");
+                // Add dashing functionality
             }
         }
-    }
 
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Enemy")
+        if (Physics.SphereCast(transform.position, 2f, cam.transform.forward, out hitInfo))
         {
-            Enemy temp = other.GetComponent<Enemy>();
-
-            if(temp != null)
+            if (hitInfo.collider.tag == "Enemy")
             {
-                Transform enemyDashSpot = temp.GetDashPosition();
-                dashConfirm = temp.GetImage();
+                temp = hitInfo.collider.GetComponent<Enemy>();
 
-
-                if (Physics.Raycast(orientation.position, orientation.forward, Mathf.Infinity))
+                if (temp != null)
                 {
-                    dashConfirm.enabled = true;
-                    canDash = true;
+                    enemyDashSpot = temp.GetDashPosition();
+
+                    if (Physics.Raycast(cam.transform.position, cam.transform.forward, 20f, enemy))
+                    {
+                        canDash = true;
+                        temp.ImageOn();
+                    }
+                    else
+                    {
+                        NoDash();
+                    }
                 }
             }
         }
+        else
+        {
+            NoDash();
+        }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void NoDash()
     {
-        if (other.tag == "Enemy")
-        {
-            dashConfirm.enabled = false;
-            canDash = false;
-        }
+        temp.ImageOff();
+        canDash = false;
     }
 }

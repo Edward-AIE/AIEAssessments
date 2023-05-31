@@ -21,11 +21,21 @@ public class Enemy : MonoBehaviour
         return dashConfirm;
     }
 
+    public void ImageOn()
+    {
+        dashConfirm.enabled = true;
+    }
+
+    public void ImageOff()
+    {
+        dashConfirm.enabled = false;
+    }
+
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        ImageOff();
     }
 
     // Update is called once per frame
