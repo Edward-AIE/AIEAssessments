@@ -220,6 +220,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   wallrun: {fileID: 9024492671959642293}
+  isGrounded: 0
   canJump: 0
   hasJumped: 0
 --- !u!114 &6124697057506180749
@@ -276,9 +277,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46515e85b58e593448d02b75c4cb85b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dashTime: 20
   dashKey: 324
-  cameraPosition: {fileID: 1251768499344024173}
   enemy:
     serializedVersion: 2
     m_Bits: 512

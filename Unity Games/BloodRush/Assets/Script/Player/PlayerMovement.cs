@@ -47,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
     float verticalMovement;
     float playerHeight = 2f;
     
-    bool isGrounded;
+    public bool isGrounded;
     bool canDash;
     bool isSliding;
     public bool canJump;
