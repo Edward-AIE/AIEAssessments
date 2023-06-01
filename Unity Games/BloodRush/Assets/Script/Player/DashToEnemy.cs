@@ -33,7 +33,7 @@ public class DashToEnemy : MonoBehaviour
             }
         }
 
-        if (Physics.SphereCast(transform.position, 2f, cam.transform.forward, out hitInfo))
+        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hitInfo, 20f, enemy))
         {
             if (hitInfo.collider.tag == "Enemy")
             {
@@ -43,16 +43,13 @@ public class DashToEnemy : MonoBehaviour
                 {
                     enemyDashSpot = temp.GetDashPosition();
 
-                    if (Physics.Raycast(cam.transform.position, cam.transform.forward, 20f, enemy))
-                    {
-                        canDash = true;
-                        temp.ImageOn();
-                    }
-                    else
-                    {
-                        NoDash();
-                    }
+                    canDash = true;
+                    temp.ImageOn();
                 }
+            }
+            else
+            {
+                NoDash();
             }
         }
         else
