@@ -5,21 +5,40 @@ using UnityEngine.UI;
 
 public class DashToEnemy : MonoBehaviour
 {
+    // Keybind
+    [Header("Keybind")]
     [SerializeField] private KeyCode dashKey = KeyCode.Mouse1;
-    private float airDashForceMulti = 2;
-    private float groundDashForceMulti = 7;
-    public LayerMask enemy;
+
+    // Values for dashing functionality based on whether or not the player is grounded
+    [Header("Multipliers")]
+    [SerializeField] private float airDashForceMulti = 2f;
+    [SerializeField] private float groundDashForceMulti = 7f;
+
+    // Variables for the raycast
+    [Header("Enemy Layer")]
+    [SerializeField] private LayerMask enemy;
     private RaycastHit hitInfo;
+
+    // Variables to hold the data grabbed out of the enemy
     private Transform enemyDashSpot;
+    private Enemy temp;  
+    
+    // Stuff about the player
     private Rigidbody rb;
     private Camera cam;
-    private Enemy temp;
     private PlayerMovement player;
+
+    // Variables specifically for this script
     private bool canDash;
     private float dashForce;
-
     private Vector3 direction;
     private float distance;
+
+    // Cooldown
+    [Header("Cooldown")]
+    [SerializeField] private float seconds;
+    private float lastDash;
+    [HideInInspector] public float timeSinceDash;
 
     private void Start()
     {
@@ -32,7 +51,7 @@ public class DashToEnemy : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    {      
         if (enemyDashSpot != null)
         {
             direction = (enemyDashSpot.position - transform.position).normalized;
@@ -52,21 +71,22 @@ public class DashToEnemy : MonoBehaviour
         {
             if (Input.GetKeyDown(dashKey))
             {
+                lastDash = Time.time;
                 rb.velocity = Vector3.zero;
                 rb.AddForce(direction * dashForce, ForceMode.Impulse);
+                temp.ImageOff();
             }
         }
-
+        
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hitInfo, 20f, enemy))
         {
             if (hitInfo.collider.tag == "Enemy")
             {
                 temp = hitInfo.collider.GetComponent<Enemy>();
-
-                if (temp != null)
+                enemyDashSpot = temp.GetDashPosition();
+                
+                if (timeSinceDash == seconds)
                 {
-                    enemyDashSpot = temp.GetDashPosition();
-
                     canDash = true;
                     temp.ImageOn();
                 }
@@ -80,11 +100,21 @@ public class DashToEnemy : MonoBehaviour
         {
             NoDash();
         }
+
+        timeSinceDash = Time.time - lastDash;
+
+        if (timeSinceDash >= seconds)
+        {
+            timeSinceDash = seconds;
+        }
     }
 
     private void NoDash()
     {
-        temp.ImageOff();
-        canDash = false;
+        if (temp != null)
+        {
+            temp.ImageOff();
+            canDash = false;
+        }
     }
 }

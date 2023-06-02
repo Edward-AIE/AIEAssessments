@@ -278,9 +278,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dashKey: 324
+  airDashForceMulti: 2
+  groundDashForceMulti: 7
   enemy:
     serializedVersion: 2
     m_Bits: 512
+  seconds: 3
+  timeSinceDash: 0
 --- !u!1 &6124697058427746170
 GameObject:
   m_ObjectHideFlags: 0

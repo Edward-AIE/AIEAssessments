@@ -47,11 +47,11 @@ public class PlayerMovement : MonoBehaviour
     float verticalMovement;
     float playerHeight = 2f;
     
-    public bool isGrounded;
-    bool canDash;
-    bool isSliding;
-    public bool canJump;
-    public bool hasJumped;
+    [HideInInspector] public bool isGrounded;
+    [HideInInspector] public bool canDash;
+    [HideInInspector] public bool isSliding;
+    [HideInInspector] public bool canJump;
+    [HideInInspector] public bool hasJumped;
 
     Vector3 moveDirection;
     Vector3 slopeMoveDirection;

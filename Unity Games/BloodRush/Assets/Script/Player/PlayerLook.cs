@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class PlayerLook : MonoBehaviour
 {
+    [Header("Sensitivity")]
     [SerializeField] private float sensX;
     [SerializeField] private float sensY;
 
-    [SerializeField] Camera cam;
+    [Header("Set in Inspector")]
     [SerializeField] Transform orientation;
     [SerializeField] Wallrun wallrun;
+
+    private Camera cam;
 
     float mouseX;
     float mouseY;
